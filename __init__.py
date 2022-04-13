@@ -7,6 +7,7 @@ def create_app():
         SECRET_KEY='THISISASECRETKEY'
     )
 
+
     from . import db
     db.init_app(app)  # connect the db to app to use teardown_appcontext
 
