@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+    <script src="{{ url_for('static', filename='/index.js') }}"></script>
+</head>
+<body>
+
+    <div class="flex-col flex-between w-20 h-full shadow-md bg-white px-1 absolute" >
+        <div class="flex items-center pl-3" style="height: 7.5%;">
+            <a href="/board"> <img src="{{ url_for('static', filename='/tigrpluskotakcom.png') }}" class="rounded-full w-10" alt="tigrplusimg"></a>
+        </div>
+        <div style="height: 85%;">
+        </div>
+        <div class="flex items-center pl-3" style="height: 7.5%;">
+            <a href="/board"> <img src="../tigrpluskotakcom.png" class="rounded-full w-10" alt="tigrplusimg"></a>
+        </div>
+    </div>
+
+<div class="pl-20">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

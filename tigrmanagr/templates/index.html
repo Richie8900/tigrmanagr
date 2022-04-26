@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Document</title>
+</head>
+<body class="bg-[#ebebeb] h-screen ">
+    <nav>
+        <div class="float-left">
+
+    <img src="{{ url_for('static', filename='/tigrpluskotakcom.png') }}" alt="" class="inline-flex w-14 h-14 mx-4 my-4 align-middle rounded-full">
+            <p class="inline-flex px-8 align-middle"><a href="">Features</a></p>
+            <p class="inline-flex px-8 align-middle"><a href="">Pricing</a></p>
+        </div>
+        <div class="float-right">
+            <p class="mx-4 my-4 py-4 px-16 bg-[#111E0F] text-white align-middle rounded-2xl"><a href="{{ url_for('board.home') }}">Login</a></p>
+        </div>
+    </nav>
+    <div class="w-3/3 inline-flex h-6/6">  
+        <div class="w-1/3">
+            <div class="mt-48 pl-20">
+                <div class="">
+                   <p class="text-6xl font-bold">Collaborate with your remote teams easily.</p>
+                   <p class="text-xl mt-4">Streamline your work for</p>
+                   <p class="text-xl">maximum productivity</p>
+                   <button class="bg-[#0A65DA] text-white py-4 px-16 mt-4 rounded-2xl"><a href="{{ url_for('board.home') }}">Get Started</a></button>
+
+                </div>
+            </div>
+        </div>
+        <div class="float-right w-2/3">
+            <img src="{{ url_for('static', filename='/5585664.jpg') }}" alt="shopping" class="h-full">
+        </div>
+    </div> 
+   
+    
+    
+</body>
+</html>
+
