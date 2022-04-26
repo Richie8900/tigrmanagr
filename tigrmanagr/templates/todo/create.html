@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+To Do
+{% endblock %}
+
+{% block content %}
+    <p id="boardID">{{ board.board_id }}</p>
+    <input id="todoTitle" type="text" name="createTodo" placeholder="Input your todo here">
+    <button type="button" onclick="createTodo({{ board.board_id }})">Create Todo</button>
+{% endblock %}

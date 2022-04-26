@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+To Do
+{% endblock %}
+
+{% block content %}
+    <p class="text-right">Welcome, {{ email }}</p>
+    <div class="-mt-8 w-fit h-full fixed bg-white-600 border">
+
+        {% for board in boards %}
+        <div class="mt-4">
+            <a class="w-30 inline-flex ml-4 text-center text-lg font-bold" href="{{ url_for('board.boardSpace', board_id=board.board_id) }}">{{ board.board_name }}</a>
+            <button class="float-right ml-4 inline-flex w-5 border bg-white-600 rounded-full" type="button" onclick="deleteBoard({{ board.board_id }}, {{ '\"%s\"' % board.board_name }})"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            <a class="float-right ml-10 inline-flex w-5 border bg-white-600 rounded-full" href="{{ url_for('board.edit', board_id=board.board_id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        </div>
+        {% endfor %}
+        <div class="ml-4 mt-10"><a class="bg-green-500 text-white border rounded-md py-2 px-8" href="{{ url_for('board.createBoard') }}">Create</a></div>
+    </div>
+
+    <table class="max-w-full mx-auto">
+        <tr>
+            <th class="text-center w-100 py-2 px-28 font-normal">Title</th>
+            <th class="text-center w-100 py-2 px-28 font-normal">Status</th>
+        </tr>
+
+        {% for todo in todos %}
+        <tr>
+            <td id="title{{ todo.todo_id }}" class="border-solid border-l-4 border-t-2 border-slate-400 w-100 text-left text-stone-900 w-100 py-2 pl-7 pr-7">
+                <div>
+                    {{ todo.todo_title }}
+                </div>
+            </td>
+            {% if todo.todo_status == 0 %}
+                <td id="statustd{{ todo.todo_id }}" class="border-solid border-l-2 border-t-2 border-r-4 border-slate-400 w-100 text-center text-neutral-50 bg-red-600 py-2 px-28 todo">Todo</td>
+            {% elif todo.todo_status == 1 %}         
+                <td id="statustd{{ todo.todo_id }}" class="border-solid border-l-2 border-t-2 border-r-4 border-slate-400 w-100 text-center text-neutral-50 bg-yellow-400 py-2 px-28">Doing</td>            
+            {% elif todo.todo_status == 2 %}         
+                <td id="statustd{{ todo.todo_id }}" class="border-solid border-l-2 border-t-2 border-r-4 border-slate-400 w-100 text-center text-neutral-50 bg-green-500 py-2 px-28">Done</td>            
+            {% endif %}
+            <td id="editBtn"><a href="{{ url_for('todo.edit', todo_id=todo.todo_id)}}"><i class="fa fa-pencil ml-4" aria-hidden="true"></i></a></td>
+            <td><button type="button" onclick="deleteTodo({{ todo.todo_id }}, {{ '\"%s\"' % todo.todo_title }})"><i class="fa fa-trash ml-10" aria-hidden="true"></i></button></td>
+        </tr>
+        {% endfor %}
+
+        <tr class="bg-slate-100"> 
+            <td class="border-solid border-l-4 border-t-2 border-r-4 border-b-2 border-slate-200 hover:border-green-400 w-100 text-left text-stone-400 hover:text-green-700 py-2 pl-7 pr-21" colspan="2" id="createTodo" ><a href="{{ url_for('board.createTodo', board_id=board.board_id) }}">Create</a></td>
+        </tr>                                                                                                                    
+    </table>
+
+{% endblock %}

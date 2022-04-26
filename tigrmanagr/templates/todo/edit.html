@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+To Do
+{% endblock %}
+
+{% block content %}
+    
+<div class="flex flex-col h-screen my-auto items-center">
+    <div>
+        <input type="text" id="todoEdit" value="{{ todo.todo_title }}">
+    </div>
+    {% if todo.todo_status == 0 %}
+    <div id="status" onclick="statusChange(this.innerHTML)">Todo</div>
+    {% elif todo.todo_status == 1 %}         
+    <div id="status" onclick="statusChange(this.innerHTML)">Doing</div>
+    {% elif todo.todo_status == 2 %}         
+    <div id="status" onclick="statusChange(this.innerHTML)">Done</div>        
+    {% endif %}
+    <div>
+        <button type="button" onclick="updateTodo({{ todo.todo_id }})">Confirm Edit</button>
+    </div>
+</div>
+
+{% endblock %}
